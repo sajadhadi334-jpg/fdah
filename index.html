@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>نامه برای ناهید</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
+  @font-face {
+    font-family: 'Sahel';
+    src: url('https://cdn.jsdelivr.net/gh/rastikerdar/sahel-font@v3.4.0/dist/Sahel.woff2') format('woff2');
+    font-display: swap;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+    font-family: 'Vazirmatn', sans-serif;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .stars {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 5px gold;
+    animation: twinkle 3s infinite ease-in-out;
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 1; }
+  }
+
+  /* کاغذ رنگی‌های جشن قهرمانی */
+  .confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 100;
+    perspective: 1000px;
+  }
+
+  .confetti-piece {
+    position: absolute;
+    top: -30px;
+    animation: confettiFall linear forwards;
+  }
+
+  @keyframes confettiFall {
+    0% {
+      transform: translateY(0) rotate(0deg) scale(0.5);
+      opacity: 0;
+    }
+    8% {
+      transform: translateY(7vh) rotate(45deg) scale(1.1);
+      opacity: 1;
+    }
+    25% {
+      transform: translateY(23vh) rotate(180deg) scale(1);
+      opacity: 0.95;
+    }
+    50% {
+      transform: translateY(48vh) rotate(360deg) scale(0.9);
+      opacity: 0.85;
+    }
+    75% {
+      transform: translateY(73vh) rotate(540deg) scale(0.75);
+      opacity: 0.6;
+    }
+    100% {
+      transform: translateY(105vh) rotate(720deg) scale(0.3);
+      opacity: 0;
+    }
+  }
+
+  .confetti-circle-glitter {
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(255,255,255,0.8), 0 0 25px currentColor;
+    animation: confettiFall linear forwards, glitterShine 0.8s ease-in-out infinite;
+  }
+
+  @keyframes glitterShine {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.8); }
+  }
+
+  .confetti-square-glitter {
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(255,255,255,0.7), 0 0 20px currentColor;
+    animation: confettiFall linear forwards, glitterShine 0.7s ease-in-out infinite;
+  }
+
+  .confetti-streamer {
+    border-radius: 2px;
+    box-shadow: 0 0 8px rgba(255,255,255,0.6);
+    animation: confettiFall linear forwards, streamerWave 1.5s ease-in-out infinite;
+  }
+
+  @keyframes streamerWave {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+  }
+
+  .confetti-heart-float {
+    animation: confettiFall linear forwards, heartFloat 2s ease-in-out infinite;
+    font-size: 22px;
+  }
+
+  @keyframes heartFloat {
+    0%, 100% { transform: translateX(0px); }
+    25% { transform: translateX(8px); }
+    75% { transform: translateX(-8px); }
+  }
+
+  .confetti-star-bright {
+    font-size: 18px;
+    animation: confettiFall linear forwards, glitterShine 0.5s ease-in-out infinite;
+  }
+
+  .envelope {
+    width: 290px;
+    height: 180px;
+    position: relative;
+    cursor: pointer;
+    z-index: 20;
+    transition: transform 0.35s ease;
+  }
+  .envelope:hover {
+    transform: scale(1.04) translateY(-6px);
+  }
+
+  .envelope-body {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(160deg, #f8e9d5, #edd4b0);
+    border-radius: 8px;
+    box-shadow: 0 16px 30px rgba(0,0,0,0.4);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    background: linear-gradient(160deg, #e6d0b0, #d4b890);
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    transform-origin: top center;
+    transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 5;
+  }
+  .envelope.open .flap {
+    transform: rotateX(180deg);
+  }
+
+  .seal {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 46px;
+    height: 46px;
+    background: radial-gradient(circle at 30% 30%, #e91e63, #9c0270);
+    border-radius: 50%;
+    z-index: 6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 19px;
+    box-shadow: 0 3px 12px rgba(233,30,99,0.5);
+    transition: all 0.5s ease;
+  }
+  .envelope.open .seal {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.2);
+  }
+
+  .envelope-text {
+    position: absolute;
+    bottom: 22px;
+    width: 100%;
+    text-align: center;
+    color: #6b4e32;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .envelope-hint {
+    position: absolute;
+    bottom: -32px;
+    width: 100%;
+    text-align: center;
+    color: rgba(255,255,255,0.75);
+    font-size: 12px;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  .notebook {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 460px;
+    height: 620px;
+    max-height: 90vh;
+    background: #fdfbf7;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    overflow: hidden;
+    border: 1px solid #e0dcd0;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 30;
+    transition: opacity 0.7s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .notebook.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .floral-header {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 58px;
+    min-height: 58px;
+    background: radial-gradient(circle, #bcd4e6 10%, transparent 11%), radial-gradient(circle, #9ac1d1 10%, transparent 11%);
+    background-size: 28px 28px;
+    opacity: 0.6;
+    border-bottom: 2px solid #e8e2d5;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1.15rem;
+    z-index: 2;
+    flex-shrink: 0;
+  }
+
+  .spiral-binding {
+    position: absolute;
+    right: -10px;
+    top: 0;
+    bottom: 0;
+    width: 34px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0;
+    z-index: 10;
+  }
+
+  .spiral-ring {
+    width: 24px;
+    height: 13px;
+    background: linear-gradient(90deg, #8e9aaf, #dfe4ea, #4b6584);
+    border-radius: 8px;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  }
+
+  .page-lines {
+    position: absolute;
+    top: 68px;
+    left: 18px;
+    right: 42px;
+    bottom: 18px;
+    background-image: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 29px,
+      #d0e1fd 29px,
+      #d0e1fd 30px
+    );
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .margin-line {
+    position: absolute;
+    left: 38px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: #f8a5c2;
+    opacity: 0.5;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .content {
+    position: relative;
+    z-index: 5;
+    padding: 70px 48px 20px 28px;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .content::-webkit-scrollbar {
+    width: 5px;
+  }
+  .content::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .content::-webkit-scrollbar-thumb {
+    background: #d4c5b2;
+    border-radius: 10px;
+  }
+
+  .title {
+    font-family: 'Sahel', 'Vazirmatn', sans-serif;
+    color: #4b0082;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 14px;
+    opacity: 0;
+    transition: opacity 0.6s;
+  }
+  .title.show {
+    opacity: 1;
+  }
+
+  .message {
+    font-family: 'Sahel', 'Vazirmatn', sans-serif;
+    color: #4b0082;
+    font-size: 1.08rem;
+    line-height: 1.85rem;
+    text-align: justify;
+    font-weight: 700;
+    text-shadow: 0 0 1px rgba(75, 0, 130, 0.15);
+  }
+
+  .message p {
+    margin-bottom: 9px;
+  }
+
+  .inky-red {
+    color: #c41e3a;
+    font-weight: 700;
+  }
+
+  .signature {
+    margin-top: 14px;
+    font-family: 'Sahel', 'Vazirmatn', sans-serif;
+    font-size: 1.05rem;
+    color: #3b0764;
+    text-align: left;
+    opacity: 0;
+    transition: opacity 0.8s;
+  }
+  .signature.show {
+    opacity: 1;
+  }
+
+  .hearts {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-top: 6px;
+    opacity: 0;
+  }
+  .hearts.show {
+    opacity: 1;
+    animation: heartbeat 1.5s infinite;
+  }
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.12); }
+  }
+
+  .cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1.05em;
+    background: #4b0082;
+    vertical-align: middle;
+    animation: blink 0.7s infinite;
+  }
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+  .envelope.hide {
+    opacity: 0;
+    transform: scale(0.5);
+    pointer-events: none;
+    transition: all 0.55s ease;
+  }
+
+  @media (max-width: 500px) {
+    .notebook {
+      width: 95vw;
+      height: 94vh;
+      max-height: 94vh;
+    }
+    .content {
+      padding: 65px 40px 18px 22px;
+    }
+    .title {
+      font-size: 1.15rem;
+    }
+    .message {
+      font-size: 1rem;
+      line-height: 1.75rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <div class="stars" id="stars"></div>
+  
+  <!-- کانتینر کاغذ رنگی‌های جشن -->
+  <div class="confetti-container" id="confettiContainer"></div>
+
+  <div class="envelope" id="envelope">
+    <div class="envelope-body">
+      <div class="flap"></div>
+      <div class="seal">💌</div>
+      <div class="envelope-text">برای ناهید عزیزم</div>
+    </div>
+    <div class="envelope-hint">برای باز کردن نامه کلیک کن ✨</div>
+  </div>
+
+  <div class="notebook" id="notebook">
+    <div class="floral-header">
+      <span>🌹 💙 🌹 💙 🌹</span>
+    </div>
+
+    <div class="spiral-binding">
+      <div class="spiral-ring"></div><div class="spiral-ring"></div>
+      <div class="spiral-ring"></div><div class="spiral-ring"></div>
+      <div class="spiral-ring"></div><div class="spiral-ring"></div>
+      <div class="spiral-ring"></div><div class="spiral-ring"></div>
+      <div class="spiral-ring"></div><div class="spiral-ring"></div>
+      <div class="spiral-ring"></div><div class="spiral-ring"></div>
+    </div>
+
+    <div class="page-lines"></div>
+    <div class="margin-line"></div>
+
+    <div class="content" id="content">
+      <div class="title" id="title">ناهید عزیزم ❤️</div>
+      <div class="message" id="typed-text"></div>
+      <div class="signature" id="signature">با تمام قلبم<br>از طرف sh</div>
+      <div class="hearts" id="hearts">💖✨🌹</div>
+    </div>
+  </div>
+
+<script>
+  // ستاره‌های پس‌زمینه
+  const starsContainer = document.getElementById('stars');
+  for (let i = 0; i < 40; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.animationDelay = Math.random() * 3 + 's';
+    starsContainer.appendChild(star);
+  }
+
+  const envelope = document.getElementById('envelope');
+  const notebook = document.getElementById('notebook');
+  const typedText = document.getElementById('typed-text');
+  const titleEl = document.getElementById('title');
+  const signatureEl = document.getElementById('signature');
+  const heartsEl = document.getElementById('hearts');
+  const contentEl = document.getElementById('content');
+  const confettiContainer = document.getElementById('confettiContainer');
+
+  // متن اصلاح‌شده برای ناهید - روان، صمیمی و دقیقاً از زبان تو
+  const fullContent = [
+    { html: 'ناهید عزیزم، اول از همه می‌خوام از ته قلبم ازت تشکر کنم که تولدم رو یادت بود و با محبتت بهم تبریک گفتی. همین که تو به یادم بودی و برات مهم بود، برام از هر چیزی باارزش‌تره.' },
+    { html: 'غرض از نوشتن این نامه، غذرخواهی که من باید میکردم .' },
+    { html: 'ناهید جون، می‌دونم که تو با من خیلی اذیت شدی. می‌دونم مشکلاتی برات به وجود اومده که خیلی هاش از سمت من بوده. خودم خوب می‌دونم که چقدر اذیتت شدی و چقدر سختی کشیدی.' },
+    { html: 'می‌دونم شرایط زندگی من و شرایط زندگی تو خیلی با هم فرق داره. همه‌چیز سخت و پیچیده شده. می‌دونم همیشه از دستم ناراحتی، همیشه از رفتارام دلخوری و دلتنگ میشی. می‌دونم خیلی داری سختی می‌کشی و از ته دل ناراحت میشی.' },
+    { html: 'می‌خوام از صمیم قلب بابت همه‌چیز ازت عذرخواهی کنم. بابت تمام لحظه‌هایی که باعث شدم دلت بگیره، بابت تمام روزهایی که به خاطر من اشک ریختی، واقعاً متأسفم و شرمنده‌ام.' },
+    { html: 'ان‌شاءالله خداوند به هردومون یه صبری بده تا شاید بتونم جبران کنم. تمام تلاشم اینه که جبران کنم. اگه هم نتونم جبران کنم، حداقل پیش وجدان خودم راحت باشم که تلاشمو کردم و کم نذاشتم.' },
+    { html: 'ازت می‌خوام که خودتو با رفتارای من ناراحت نکنی. رفتارای من نباید باعث بشه تو اذیت بشی و دلت بگیره. می‌دونم شاید نتونی منو کامل درک کنی، فشار زندگی و همه‌چیز روی دوش منه. ولی ازت خواهش می‌کنم بیشتر سعی کنی منو درک کنی و شرایطم رو بدونی.' },
+    { html: 'می‌دونم شاید شرایطم روزبه‌روز  خوب نباشه و حتی بدتر هم بشه. ولی ازت می‌خوام که تحمل کنی و صبر داشته باشی. شاید اوضاع بهتر شد، شاید روزهای خوبی در راه باشه.' },
+    { html: 'ان‌شاءالله که روزهای قشنگ و خوبی رو با هم داشته باشیم. به امید اون روز، با تمام وجودم ازت ممنونم که هستی و صبوری می‌کنی. ❤️' }
+  ];
+
+  // تابع ساخت کاغذ رنگی‌های جشن قهرمانی (مثل جام جهانی)
+  function createConfetti() {
+    const colors = [
+      '#FFD700', '#FFC107', '#FFEB3B',
+      '#FF6B6B', '#FF4757', '#FF3838',
+      '#FF6B8A', '#FF8FA3', '#FFB3C6',
+      '#C9184A', '#A4133C', '#800F2F',
+      '#FFFFFF', '#F8F9FA', '#E9ECEF',
+      '#4ECDC4', '#45B7D1', '#2ECC71',
+      '#F9CA24', '#F0932B', '#EB4D4B',
+      '#E056A0', '#BE2EDD', '#9B59B6',
+    ];
+
+    const heartEmojis = ['💕', '💖', '💗', '💝', '💘', '💌', '❤️', '🧡', '💛', '💚', '💙', '💜', '🤍', '🌸', '🌷', '🌹', '💐', '✨', '💫', '🕊️'];
+    const starEmojis = ['⭐', '🌟', '✨', '💫', '⚡', '🔸', '🔹'];
+
+    const confettiCount = 120;
+
+    for (let i = 0; i < confettiCount; i++) {
+      const piece = document.createElement('div');
+      piece.className = 'confetti-piece';
+      
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      
+      piece.style.left = Math.random() * 100 + '%';
+      piece.style.animationDelay = Math.random() * 1.5 + 's';
+      
+      const duration = 3.5 + Math.random() * 5;
+      piece.style.animationDuration = duration + 's';
+      
+      const sizeScale = 0.7 + Math.random() * 1.6;
+      const confettiType = Math.random();
+      
+      if (confettiType < 0.35) {
+        piece.classList.add('confetti-circle-glitter');
+        piece.style.backgroundColor = color;
+        piece.style.color = color;
+        const size = 8 * sizeScale;
+        piece.style.width = size + 'px';
+        piece.style.height = size + 'px';
+      } else if (confettiType < 0.55) {
+        piece.classList.add('confetti-square-glitter');
+        piece.style.backgroundColor = color;
+        piece.style.color = color;
+        const size = 10 * sizeScale;
+        piece.style.width = size + 'px';
+        piece.style.height = size + 'px';
+      } else if (confettiType < 0.7) {
+        piece.classList.add('confetti-streamer');
+        piece.style.backgroundColor = color;
+        const width = 18 * sizeScale;
+        const height = 6 * sizeScale;
+        piece.style.width = width + 'px';
+        piece.style.height = height + 'px';
+      } else if (confettiType < 0.88) {
+        piece.classList.add('confetti-heart-float');
+        piece.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+        piece.style.fontSize = (20 * sizeScale) + 'px';
+      } else {
+        piece.classList.add('confetti-star-bright');
+        piece.textContent = starEmojis[Math.floor(Math.random() * starEmojis.length)];
+        piece.style.fontSize = (16 * sizeScale) + 'px';
+      }
+      
+      confettiContainer.appendChild(piece);
+      
+      setTimeout(() => {
+        if (piece.parentNode) {
+          piece.remove();
+        }
+      }, (duration + 2) * 1000);
+    }
+  }
+
+  // باز کردن پاکت نامه
+  envelope.addEventListener('click', () => {
+    if (envelope.classList.contains('open')) return;
+    
+    envelope.classList.add('open');
+    
+    createConfetti();
+    
+    setTimeout(() => {
+      createConfetti();
+    }, 400);
+    
+    setTimeout(() => {
+      envelope.classList.add('hide');
+      notebook.classList.add('show');
+      
+      setTimeout(() => {
+        createConfetti();
+      }, 200);
+      
+      setTimeout(() => {
+        createConfetti();
+      }, 700);
+      
+      setTimeout(() => {
+        titleEl.classList.add('show');
+        startTyping();
+      }, 600);
+    }, 700);
+  });
+
+  // تایپ متن نامه - با سرعت کندتر
+  function startTyping() {
+    let paraIndex = 0;
+    let charIndex = 0;
+    let currentHTML = '';
+    let isTag = false;
+    let tagBuffer = '';
+
+    function type() {
+      if (paraIndex >= fullContent.length) {
+        typedText.innerHTML = typedText.innerHTML.replace(/<span class="cursor"><\/span>/, '');
+        setTimeout(() => {
+          signatureEl.classList.add('show');
+          createConfetti();
+          setTimeout(() => {
+            createConfetti();
+          }, 500);
+          setTimeout(() => heartsEl.classList.add('show'), 400);
+        }, 400);
+        return;
+      }
+
+      const currentPara = fullContent[paraIndex].html;
+
+      if (charIndex < currentPara.length) {
+        const char = currentPara[charIndex];
+
+        if (char === '<') {
+          isTag = true;
+          tagBuffer = '<';
+        } else if (char === '>' && isTag) {
+          tagBuffer += '>';
+          currentHTML += tagBuffer;
+          isTag = false;
+          tagBuffer = '';
+        } else if (isTag) {
+          tagBuffer += char;
+        } else {
+          currentHTML += char;
+        }
+
+        typedText.innerHTML = currentHTML + '<span class="cursor"></span>';
+        charIndex++;
+        
+        contentEl.scrollTop = contentEl.scrollHeight;
+        
+        // کندتر کردن سرعت تایپ - زمان‌های بیشتری برای هر کاراکتر
+        // برای فاصله‌ها و کاراکترهای عادی زمان بیشتری در نظر گرفته شده
+        let delay;
+        if (char === ' ') {
+          delay = 60; // فاصله‌ها با تاخیر بیشتر
+        } else if (char === '،' || char === '.' || char === '؟' || char === '!') {
+          delay = 90; // علائم نگارشی با تاخیر بیشتر
+        } else {
+          delay = 45; // کاراکترهای عادی
+        }
+        setTimeout(type, delay);
+      } else {
+        currentHTML += '</p><p>';
+        typedText.innerHTML = '<p>' + currentHTML + '<span class="cursor"></span>';
+        paraIndex++;
+        charIndex = 0;
+        
+        contentEl.scrollTop = contentEl.scrollHeight;
+        
+        // تاخیر بیشتر بین پاراگراف‌ها
+        setTimeout(type, 350);
+      }
+    }
+
+    typedText.innerHTML = '<p>';
+    currentHTML = '';
+    type();
+  }
+</script>
+</body>
+</html>
